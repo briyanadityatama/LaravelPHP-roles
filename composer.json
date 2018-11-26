@@ -1,5 +1,5 @@
 {
-  "name": "briyanadityatama/LaravelPHP-roles",
+  "name": "briyanadityatama/laravelphp-roles",
   "description": "Powerful package for handling roles and permissions in Laravel. Supports Laravel 5.3, 5.4, and 5.5",
   "keywords": [
     "roles",
