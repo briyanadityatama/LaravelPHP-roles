@@ -5,25 +5,25 @@
 A Powerful package for handling roles and permissions in Laravel.
 
 - [Installation](#installation)
-    - [Composer](#composer)
-    - [Service Provider](#service-provider)
-    - [Config File And Migrations](#config-file-and-migrations)
-    - [HasRoleAndPermission Trait And Contract](#hasroleandpermission-trait-and-contract)
-    - [Migrations and Seeds](#migrations-and-seeds)
-    - [Migrate from Bican roles](#Migrate-from-bican-roles)
+  - [Composer](#composer)
+  - [Service Provider](#service-provider)
+  - [Config File And Migrations](#config-file-and-migrations)
+  - [HasRoleAndPermission Trait And Contract](#hasroleandpermission-trait-and-contract)
+  - [Migrations and Seeds](#migrations-and-seeds)
+  - [Migrate from Bican roles](#Migrate-from-bican-roles)
 - [Usage](#usage)
-    - [Creating Roles](#creating-roles)
-    - [Attaching, Detaching and Syncing Roles](#attaching-detaching-and-syncing-roles)
-    - [Assign a user role to new registered users](#assign-a-user-role-to-new-registered-users)
-    - [Checking For Roles](#checking-for-roles)
-    - [Levels](#levels)
-    - [Creating Permissions](#creating-permissions)
-    - [Attaching, Detaching and Syncing Permissions](#attaching-detaching-and-syncing-permissions)
-    - [Checking For Permissions](#checking-for-permissions)
-    - [Permissions Inheriting](#permissions-inheriting)
-    - [Entity Check](#entity-check)
-    - [Blade Extensions](#blade-extensions)
-    - [Middleware](#middleware)
+  - [Creating Roles](#creating-roles)
+  - [Attaching, Detaching and Syncing Roles](#attaching-detaching-and-syncing-roles)
+  - [Assign a user role to new registered users](#assign-a-user-role-to-new-registered-users)
+  - [Checking For Roles](#checking-for-roles)
+  - [Levels](#levels)
+  - [Creating Permissions](#creating-permissions)
+  - [Attaching, Detaching and Syncing Permissions](#attaching-detaching-and-syncing-permissions)
+  - [Checking For Permissions](#checking-for-permissions)
+  - [Permissions Inheriting](#permissions-inheriting)
+  - [Entity Check](#entity-check)
+  - [Blade Extensions](#blade-extensions)
+  - [Middleware](#middleware)
 - [Config File](#config-file)
 - [More Information](#more-information)
 - [Opening an Issue](#opening-an-issue)
@@ -38,16 +38,18 @@ This package is very easy to set up. There are only couple of steps.
 ### Composer
 
 Pull this package in through Composer
+
 ```
 composer require briyanadityatama/LaravelPHP-roles
 ```
 
 ### Service Provider
-* Laravel 5.5 and up
-Uses package auto discovery feature, no need to edit the `config/app.php` file.
 
-* Laravel 5.4 and below
-Add the package to your application service providers in `config/app.php` file.
+- Laravel 5.5 and up
+  Uses package auto discovery feature, no need to edit the `config/app.php` file.
+
+- Laravel 5.4 and below
+  Add the package to your application service providers in `config/app.php` file.
 
 ```php
 'providers' => [
@@ -66,7 +68,7 @@ Add the package to your application service providers in `config/app.php` file.
 
 Publish the package config file and migrations to your application. Run these commands inside your terminal.
 
-    php artisan vendor:publish --tag=laravelroles
+    php artisan vendor:publish --tag=laravelphproles
 
 ### HasRoleAndPermission Trait And Contract
 
@@ -98,14 +100,14 @@ class User extends Authenticatable
 ```
 
 ### Migrations and seeds
+
 > This uses the default users table which is in Laravel. You should already have the migration file for the users table available and migrated.
 
 1. Setup the needed tables:
 
-    `php artisan migrate`
+   `php artisan migrate`
 
 2. Update `database\seeds\DatabaseSeeder.php` to include the seeds. See example below.
-
 
 ```php
 <?php
@@ -143,63 +145,66 @@ php artisan db:seed
 ```
 
 #### Roles Seeded
-|Property|Value|
-|----|----|
-|Name| Admin|
-|Slug| admin|
-|Description| Admin Role|
-|Level| 5|
 
-|Property|Value|
-|----|----|
-|Name| User|
-|Slug| user|
-|Description| User Role|
-|Level| 1|
+| Property    | Value      |
+| ----------- | ---------- |
+| Name        | Admin      |
+| Slug        | admin      |
+| Description | Admin Role |
+| Level       | 5          |
 
-|Property|Value|
-|----|----|
-|Name| Unverified|
-|Slug| unverified|
-|Description| Unverified Role|
-|Level| 0|
+| Property    | Value     |
+| ----------- | --------- |
+| Name        | User      |
+| Slug        | user      |
+| Description | User Role |
+| Level       | 1         |
+
+| Property    | Value           |
+| ----------- | --------------- |
+| Name        | Unverified      |
+| Slug        | unverified      |
+| Description | Unverified Role |
+| Level       | 0               |
 
 #### Permissions Seeded:
-|Property|Value|
-|----|----|
-|name|Can View Users|
-|slug|view.users|
-|description|Can view users|
-|model|Permission|
 
-|Property|Value|
-|----|----|
-|name|Can Create Users|
-|slug|create.users|
-|description|Can create new users|
-|model|Permission|
+| Property    | Value          |
+| ----------- | -------------- |
+| name        | Can View Users |
+| slug        | view.users     |
+| description | Can view users |
+| model       | Permission     |
 
-|Property|Value|
-|----|----|
-|name|Can Edit Users|
-|slug|edit.users|
-|description|Can edit users|
-|model|Permission|
+| Property    | Value                |
+| ----------- | -------------------- |
+| name        | Can Create Users     |
+| slug        | create.users         |
+| description | Can create new users |
+| model       | Permission           |
 
-|Property|Value|
-|----|----|
-|name|Can Delete Users|
-|slug|delete.users|
-|description|Can delete users|
-|model|Permission|
+| Property    | Value          |
+| ----------- | -------------- |
+| name        | Can Edit Users |
+| slug        | edit.users     |
+| description | Can edit users |
+| model       | Permission     |
 
+| Property    | Value            |
+| ----------- | ---------------- |
+| name        | Can Delete Users |
+| slug        | delete.users     |
+| description | Can delete users |
+| model       | Permission       |
 
 ### And that's it!
 
 ---
 
 ## Migrate from bican roles
+
 If you migrate from bican/roles to briyanadityatama/LaravelPHPRoles you will need to update a few things.
+
 - Change all calls to `can`, `canOne` and `canAll` to `hasPermission`, `hasOnePermission`, `hasAllPermissions`.
 - Change all calls to `is`, `isOne` and `isAll` to `hasRole`, `hasOneRole`, `hasAllRoles`.
 
@@ -247,7 +252,7 @@ $user->syncRoles($roles); // you can pass Eloquent collection, or just an array 
 You can assign the user a role upon the users registration by updating the file `app\Http\Controllers\Auth\RegisterController.php`.
 You can assign a role to a user upon registration by including the needed models and modifying the `create()` method to attach a user role. See example below:
 
-* Update the top of `app\Http\Controllers\Auth\RegisterController.php`:
+- Update the top of `app\Http\Controllers\Auth\RegisterController.php`:
 
 ```php
 <?php
@@ -263,7 +268,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 ```
 
-* Updated `create()` method of `app\Http\Controllers\Auth\RegisterController.php`:
+- Updated `create()` method of `app\Http\Controllers\Auth\RegisterController.php`:
 
 ```php
     protected function create(array $data)
@@ -549,10 +554,13 @@ You can catch these exceptions inside `app/Exceptions/Handler.php` file and do w
 ---
 
 ## Config File
+
 You can change connection for models, slug separator, models path and there is also a handy pretend feature. Have a look at config file for more information.
 
 ## More Information
+
 For more information, please have a look at [HasRoleAndPermission](https://github.com/briyanadityatama/LaravelPHP-roles/blob/master/src/Contracts/HasRoleAndPermission.php) contract.
 
 ## License
+
 This package is free software distributed under the terms of the MIT license.
